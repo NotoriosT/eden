@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\Tiago\\\\Downloads\\\\eden\\\\eden-front\\\\src\" -Recurse -File | Where-Object {$_.Extension -in @\\('.tsx', '.ts', '.jsx', '.js'\\)})",
+      "Bash(go build *)"
+    ]
+  }
+}

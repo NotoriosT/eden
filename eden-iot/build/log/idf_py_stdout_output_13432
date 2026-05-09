@@ -1,0 +1,12 @@
+Command: cmake -G Ninja -B C:\Users\Tiago\Downloads\eden\eden-iot\build -DPYTHON_DEPS_CHECKED=1 -DPYTHON=D:\Espressif\python_env\idf6.0_py3.11_env\Scripts\python.exe -DESP_PLATFORM=1 -DCCACHE_ENABLE=True C:\Users\Tiago\Downloads\eden\eden-iot
+-- Component directory D:/.espressif/v6.0.1/esp-idf/components/mqtt does not contain a CMakeLists.txt file. No component will be added
+-- Minimal build - OFF
+-- ccache will be used for faster recompilation
+-- git rev-parse returned 'fatal: not a git repository (or any of the parent directories): .git'
+-- Could not use 'git describe' to determine PROJECT_VER.
+-- Building ESP-IDF components for target esp32
+NOTICE: Processing 2 dependencies:
+NOTICE: [1/2] espressif/mqtt (1.0.0)
+NOTICE: [2/2] idf (6.0.1)
+-- ESP-TEE is currently supported only on the esp32c6;esp32h2;esp32c5;esp32c61 SoCs
+-- Configuring incomplete, errors occurred!

@@ -1,0 +1,21 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "modules/sensors.c"
+    INCLUDE_DIRS
+        "."
+        "include"
+    REQUIRES
+        esp_wifi
+        nvs_flash
+        esp_event
+        esp_netif
+        esp_driver_gpio
+        esp_adc
+        esp_http_client
+        app_update
+        esp_partition
+        mbedtls
+        cjson
+        espressif__mqtt
+)

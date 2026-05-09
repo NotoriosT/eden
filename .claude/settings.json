@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(go build *)",
+      "Bash(docker compose *)",
+      "Bash(curl -s http://localhost:8080/health)",
+      "Bash(curl -s http://localhost:8080/api/automation-rules)",
+      "Bash(taskkill /PID 11252 /F)",
+      "PowerShell(Stop-Process -Id 11252 -Force)",
+      "Bash(curl -s -X POST http://localhost:8080/api/automation-rules -H 'Content-Type: application/json' -d '{\"name\":\"Teste temp alta\",\"tipo_parametro\":\"COMPARACAO\",\"enabled\":true,\"variavel_sensor\":\"TEMPERATURA\",\"operador\":\"MAIOR_QUE\",\"valor\":30,\"dispositivo\":\"EXAUSTAO\",\"comando\":\"LIGAR\"}')"
+    ]
+  }
+}

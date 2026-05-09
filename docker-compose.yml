@@ -1,0 +1,64 @@
+services:
+  emqx:
+    image: emqx/emqx:5.8.4
+    container_name: eden-emqx
+    ports:
+      - "1883:1883"
+      - "18083:18083"
+    environment:
+      EMQX_DASHBOARD__DEFAULT_USERNAME: admin
+      EMQX_DASHBOARD__DEFAULT_PASSWORD: public
+
+  mongo:
+    image: mongo:7
+    container_name: eden-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  mongo-express:
+    image: mongo-express:1.0.2
+    container_name: eden-mongo-express
+    depends_on:
+      - mongo
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+
+  backend:
+    build:
+      context: ./eden-back
+    container_name: eden-backend
+    depends_on:
+      - emqx
+      - mongo
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      PUBLIC_BASE_URL: http://192.168.1.104:8080
+      MONGO_URI: mongodb://mongo:27017
+      MONGO_DB: eden
+      MQTT_BROKER: tcp://emqx:1883
+      MQTT_CLIENT_ID: eden-go-backend
+      MQTT_SENSOR_TOPIC: eden/sensors/greenhouse
+      MQTT_COMMAND_TOPIC: eden/actuators/cmd
+      MQTT_STATE_TOPIC: eden/actuators/state
+      AUTOMATION_ENGINE: esp
+
+  frontend:
+    build:
+      context: ./eden-front
+    container_name: eden-frontend
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:8080
+
+volumes:
+  mongo_data:
+
